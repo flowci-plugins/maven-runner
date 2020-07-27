@@ -1,0 +1,13 @@
+name: maven-runner
+version: 1.0.0
+icon: "maven_icon.svg"
+
+inputs:
+- name: MVN_CMD
+  type: string
+  required: true
+
+script: |
+  cd ${FLOWCI_GIT_REPO}
+  export MAVEN_OPTS="-Dmaven.repo.local=${FLOWCI_AGENT_WORKSPACE}/.m2"
+  $MVN_CMD
